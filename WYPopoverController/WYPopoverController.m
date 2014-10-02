@@ -1596,6 +1596,7 @@ static float edgeSizeFromCornerRadius(float cornerRadius) {
 @synthesize popoverContentSize = popoverContentSize_;
 @synthesize animationDuration;
 @synthesize theme;
+@synthesize tintSubviewsDisabled;
 
 static WYPopoverTheme *defaultTheme_ = nil;
 
@@ -2018,14 +2019,20 @@ static WYPopoverTheme *defaultTheme_ = nil;
                 strongSelf->backgroundView.alpha = 1;
                 strongSelf->backgroundView.transform = endTransform;
             }
-            adjustTintDimmed();
+            if (!tintSubviewsDisabled)
+            {
+                adjustTintDimmed();
+            }
         } completion:^(BOOL finished) {
             completionBlock(YES);
         }];
     }
     else
     {
-        adjustTintDimmed();
+        if (!tintSubviewsDisabled)
+        {
+            adjustTintDimmed();
+        }
         [viewController viewWillAppear:NO];
         completionBlock(NO);
     }

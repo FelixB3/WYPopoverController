@@ -102,6 +102,7 @@ typedef NS_OPTIONS(NSUInteger, WYPopoverAnimationOptions) {
 @property (nonatomic, strong, readonly) UIViewController       *contentViewController;
 @property (nonatomic, assign) CGSize                            popoverContentSize;
 @property (nonatomic, assign) float                             animationDuration;
+@property (nonatomic, assign) BOOL                              tintSubviewsDisabled;
 
 @property (nonatomic, strong) WYPopoverTheme                   *theme;
 
